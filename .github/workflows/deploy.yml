@@ -19,3 +19,9 @@ jobs:
             script: | 
                 cd /var/www/portfolio
                 git pull origin main
+                export NV_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                nvm use v22.14.0
+                npm install
+                npm run build
+                systemctl reload nginx
